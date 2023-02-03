@@ -1,38 +1,127 @@
-.App {
-  text-align: center;
+/* HOMEPAGE */
+
+.home {
+  overflow-y: hidden;
+}
+.backgroundimg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.logo {
+  z-index: 2;
+  position: absolute;
+  left: 70px;
+  top: 25px;
+}
+.line {
+  position: absolute;
+  background-color: black;
+  margin-top: 89px;
+  margin-left: 70px;
+  max-width: 1780px;
+  width: 100%;
+  height: 1px;
+}
+.center-logo {
+  position: absolute;
+  margin-top: 384px;
+  margin-left: 1076px;
+}
+.addresumebtn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 45%;
+  left: 40%;
+  max-width: 464px;
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  z-index: 4;
+}
+.addresumebtn a {
+  color: white;
+  font-size: 25px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Personal Info */
+.main-info {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.info-left {
+  width: 60%;
+  height: 1080px;
+  background-color: #f9f9f9;
+  padding: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding-top: 100px;
+}
+.info-box {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.back-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #fff;
 }
-
-.App-link {
-  color: #61dafb;
+.info-header {
+  max-width: 799px;
+  width: 100%;
+  height: 41px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-bottom: 12px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.info-header::after {
+  content: " ";
+  max-width: 798px;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.info-form {
+  max-width: 800px;
+  width: 100%;
+  height: 1080px;
+  margin-left: 100px;
+  margin-top: 68px;
+}
+.fullname {
+  max-width: 845px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+.name {
+  width: 45%;
+}
+.abt-mail-phone {
+  margin-top: 60px;
+  height: 482px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.next-btn {
+  margin-left: 86%;
 }
