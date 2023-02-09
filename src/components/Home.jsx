@@ -10,7 +10,7 @@ const Home = () => {
       <div className="line"> </div>
       <img className="center-logo" src={logo2} alt="logocenter" />
       <div className="addresumebtn">
-        <a href="/info">რეზიუმეს დამატება</a>
+        <a href="/form">რეზიუმეს დამატება</a>
       </div>
       <img className="backgroundimg" src={homeimg} alt="backgroundimg" />
     </div>

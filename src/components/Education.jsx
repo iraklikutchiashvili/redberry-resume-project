@@ -1,7 +1,7 @@
 import React from "react";
 
-function Edu() {
+function Education() {
   return <div>Edu</div>;
 }
 
-export default Edu;
+export default Education;
