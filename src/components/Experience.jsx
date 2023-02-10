@@ -4,32 +4,33 @@ import Button from "@mui/material/Button";
 import Exp from "./Exp";
 
 function Experience(props) {
-  const [exp, setExp] = useState(false);
-  function addExp() {
-    setExp(true);
+  const [extraExp, setExtraExp] = useState(false);
+  function addExtraExp() {
+    setExtraExp(true);
   }
+  const { data, handleChange, setPage, currentPage } = props;
   function handleClick() {
-    props.setPage(props.currentPage + 1);
+    setPage(currentPage + 1);
   }
   return (
     <div>
-      <Exp additionalExp={exp} />
-      {exp && <Exp />}
+      <Exp additionalExp={extraExp} />
+      {extraExp && <Exp />}
       <Button
-        onClick={addExp}
+        onClick={addExtraExp}
         sx={{ mt: 5, opacity: "0.5" }}
         variant="contained"
       >
         მეტი გამოცდილების დამატება
       </Button>
 
-      <Stack direction="row" justifyContent="space-between">
+      <Stack sx={{ mt: 10 }} direction="row" justifyContent="space-between">
         <Button
           onClick={() => {
-            props.setPage(props.currentPage - 1);
+            setPage(currentPage - 1);
           }}
           size="medium"
-          sx={{ mt: 10, bgcolor: "#6B40E3" }}
+          sx={{ bgcolor: "#6B40E3" }}
           variant="contained"
         >
           უკან
@@ -37,7 +38,7 @@ function Experience(props) {
         <Button
           onClick={handleClick}
           size="large"
-          sx={{ mt: 10, bgcolor: "#6B40E3" }}
+          sx={{ bgcolor: "#6B40E3" }}
           variant="contained"
         >
           შემდეგი

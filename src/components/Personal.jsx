@@ -8,21 +8,12 @@ import valid from "../images/valid.png";
 
 function Personal(props) {
   const [validatInputs, setValidatInputs] = useState({
-    FName: false,
-    LName: false,
-    file: false,
-    about: false,
+    name: false,
+    surname: false,
+    image: false,
+    about_me: false,
     email: false,
-    phone: false,
-  });
-
-  const [values, setValues] = useState({
-    FName: "",
-    LName: "",
-    file: "",
-    about: "",
-    email: "",
-    phone: "",
+    phone_number: false,
   });
 
   function isInputValid(event) {
@@ -30,18 +21,18 @@ function Personal(props) {
     const name = event.target.name;
     let regex;
     let lengthCondition;
-    if (name === "FName" || name === "LName") {
+    if (name === "name" || name === "surname") {
       regex = /[ა-ჰ]+/;
       lengthCondition = value.length < 2;
-    } else if (name === "file") {
+    } else if (name === "image") {
       regex = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i;
       lengthCondition = value.length < 0;
     } else if (name === "email") {
       regex = /^[a-zA-z]\w+@redberry.ge$/;
-    } else if (name === "phone") {
+    } else if (name === "phone_number") {
       regex = /^\+9955\d+/;
       lengthCondition = value.length > 13 || value.length < 13;
-    } else if (name === "about") {
+    } else if (name === "about_me") {
       regex = /.*/;
       lengthCondition = false;
     }
@@ -56,22 +47,18 @@ function Personal(props) {
     }
   }
 
-  function handleChange(event) {
-    const value = event.target.value;
-    const name = event.target.name;
-    setValues((prevValues) => {
-      return {
-        ...prevValues,
-        [name]: value,
-      };
-    });
-  }
+  const { data, handleFile, handleChange } = props;
 
   function checkIfValidAndProceed(e) {
     const inputEntries = Object.entries(validatInputs);
     const everyInputsCheck = inputEntries.every((input) => input[1] === false);
-    const inputValues = Object.entries(values);
-    const everyValuesCheck = inputValues.every((value) => value[1] !== "");
+    const inputValues = Object.entries(data);
+    const onlyPersonalEntries = inputValues.filter(
+      (pair) => pair[0] !== "experiences" || pair[0] !== "educations"
+    );
+    const everyValuesCheck = onlyPersonalEntries.every(
+      (value) => value[1] !== ""
+    );
     if (!everyInputsCheck || !everyValuesCheck) {
       inputValues.forEach((pair) => {
         if (pair[1] === "") {
@@ -97,11 +84,11 @@ function Personal(props) {
         <div className="fullname">
           <div className="name">
             <TextField
-              value={values.FName}
-              name="FName"
+              value={data.name}
+              name="name"
               onBlur={isInputValid}
               onChange={handleChange}
-              error={validatInputs.FName}
+              error={validatInputs.name}
               id="standard-helperText"
               label="სახელი"
               placeholder="ანზორი"
@@ -113,11 +100,11 @@ function Personal(props) {
 
           <div className="name">
             <TextField
-              value={values.LName}
-              name="LName"
+              value={data.surname}
+              name="surname"
               onBlur={isInputValid}
               onChange={handleChange}
-              error={validatInputs.LName}
+              error={validatInputs.surname}
               id="standard-helperText"
               label="გვარი"
               placeholder="მგელაძე"
@@ -135,10 +122,9 @@ function Personal(props) {
               hidden
               multiple
               type="file"
-              onChange={isInputValid}
-              name="file"
-              value={values.file}
-              onInput={handleChange}
+              onChange={handleFile}
+              name="image"
+              onInput={isInputValid}
             />
           </Button>
           {/* {!validatInputs.file && <img src={error} />} */}
@@ -146,8 +132,8 @@ function Personal(props) {
 
         <div className="abt-mail-phone">
           <TextField
-            name="about"
-            value={values.about}
+            name="about_me"
+            value={data.about_me}
             onInput={isInputValid}
             onChange={handleChange}
             id="outlined-multiline-static"
@@ -162,7 +148,7 @@ function Personal(props) {
             onChange={handleChange}
             onBlur={isInputValid}
             error={validatInputs.email}
-            value={values.email}
+            value={data.email}
             id="standard-helperText"
             label="ელფოსტა"
             placeholder="anzor666@redberry.ge"
@@ -171,11 +157,11 @@ function Personal(props) {
             fullWidth={true}
           />
           <TextField
-            name="phone"
+            name="phone_number"
             onBlur={isInputValid}
             onChange={handleChange}
-            error={validatInputs.phone}
-            value={values.phone}
+            error={validatInputs.phone_number}
+            value={data.phone_number}
             id="standard-helperText"
             label="მობილურის ნომერი"
             placeholder="+995 555 55 55 55"
